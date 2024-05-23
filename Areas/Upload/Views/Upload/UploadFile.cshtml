@@ -1,0 +1,72 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using PlagiarismSystem.HtmlHelpers
+@using PlagiarismSystem.Models
+@model FoldersModel
+<!DOCTYPE html>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            @await Component.InvokeAsync("CreateNewFolder")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form class="border p-3" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    @* @Html.DropDownList("folders", new SelectList(Model.Folders.Where(x=> x !="Выберите папку для сравения" )), "Выберите папку")<br> *@
+                    <select id="folders" class="form-control" name="folders" asp-items="@new SelectList(Model.Folders)">
+                        <option disabled selected value="">Выберите папку</option>
+                    </select>
+                    @* <label for="image_uploads">Выберите файлы для загрузки</label> *@
+                    <input
+                    class="form-control mt-2"
+                    type="file"
+                    id="image_uploads"
+                    name="image_uploads"
+                    multiple />
+                </div>
+                <div class="col-md-11 mx-auto mt-4 preview">
+                    <p>Не выбраны файлы для загрузки</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" id="send_button" type="submit">Загрузить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="border p-3">
+                @* <progress value="0" max="100"></progress> *@
+                <p>
+                    <strong>Статус загрузки:</strong>
+                    <span id="statusMessage">Нет загруженных файлов</span>
+                </p>
+                
+                <p>
+                    <strong>Загруженные файлы:</strong>
+                    <span id="fileNum">0</span>
+                    <ul id="fileListMetadata"></ul>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-3">
+            <div class="border p-3" style ="margin-bottom: 5rem;">
+                <div>
+                    <strong>Файлы на сервере:</strong>
+                    <button id="update_files" class="btn btn-primary">Обновить</button>
+                    <ul id="filesOnServer"></ul>
+                </div>
+
+                <div class="treeview">
+                    @Html.CreateTree()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script asp-append-version="true">@await Html.PartialAsync("ScriptsUploadFile")</script>

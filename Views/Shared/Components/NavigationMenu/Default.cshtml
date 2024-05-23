@@ -1,0 +1,11 @@
+@model IEnumerable<PageInfo>
+
+@foreach(var pageInfo in Model)
+{
+    <a class="btn btn-block @(pageInfo.AreaName== ViewBag.SelectedArea ? "btn-primary" : "btn-secondary")"
+    asp-area="@pageInfo.AreaName"
+    asp-action="@pageInfo.ActionName"
+    asp-controller="@pageInfo.ControllerName">
+        @pageInfo.PageName
+    </a>    
+}я

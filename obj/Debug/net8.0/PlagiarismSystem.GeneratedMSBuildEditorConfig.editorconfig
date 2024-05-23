@@ -1,0 +1,91 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PlagiarismSystem
+build_property.RootNamespace = PlagiarismSystem
+build_property.ProjectDir = C:\Users\vanya\OneDrive\Рабочий стол\PlagiarismSystem\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\vanya\OneDrive\Рабочий стол\PlagiarismSystem
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Convert/Views/Convert/Convert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udmVydFxWaWV3c1xDb252ZXJ0XENvbnZlcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Convert/Views/Convert/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udmVydFxWaWV3c1xDb252ZXJ0XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Convert/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udmVydFxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Main/Views/Main/Main.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFpblxWaWV3c1xNYWluXE1haW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Main/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFpblxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Upload/Views/Upload/Components/CreateNewFolder/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXBsb2FkXFZpZXdzXFVwbG9hZFxDb21wb25lbnRzXENyZWF0ZU5ld0ZvbGRlclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Upload/Views/Upload/ScriptsUploadFile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXBsb2FkXFZpZXdzXFVwbG9hZFxTY3JpcHRzVXBsb2FkRmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Upload/Views/Upload/UploadFile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXBsb2FkXFZpZXdzXFVwbG9hZFxVcGxvYWRGaWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Areas/Upload/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXBsb2FkXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/Shared/Components/NavigationMenu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmF2aWdhdGlvbk1lbnVcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/Shared/Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEZvb3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/Shared/FooterPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEZvb3RlclBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/Shared/HeaderPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEhlYWRlclBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/Shared/MetatagsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1ldGF0YWdzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/Shared/ScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vanya/OneDrive/Рабочий стол/PlagiarismSystem/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

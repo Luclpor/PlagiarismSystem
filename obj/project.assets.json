@@ -1,0 +1,112 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "Antlr4.Runtime/4.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Antlr4.Runtime/4.8.0": {
+      "sha512": "WK79TTCmzU6fGuUMrklwMjq5dbz3orGCaRl33f3m+zka1IT0fNRuyUAOdvm40kuovI2cUFzcHMPsl7b93TyFaQ==",
+      "type": "package",
+      "path": "antlr4.runtime/4.8.0",
+      "files": [
+        ".nupkg.metadata",
+        "antlr4.runtime.4.8.0.nupkg.sha512",
+        "antlr4.runtime.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Antlr4.Runtime.Standard.dll",
+        "lib/netstandard2.0/Antlr4.Runtime.Standard.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "Antlr4.Runtime >= 4.8.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\vanya\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\PlagiarismSystem\\PlagiarismSystem.csproj",
+      "projectName": "PlagiarismSystem",
+      "projectPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\PlagiarismSystem\\PlagiarismSystem.csproj",
+      "packagesPath": "C:\\Users\\vanya\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vanya\\OneDrive\\Рабочий стол\\PlagiarismSystem\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\vanya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "Antlr4.Runtime": {
+            "target": "Package",
+            "version": "[4.8.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

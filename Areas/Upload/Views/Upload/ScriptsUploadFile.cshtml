@@ -1,0 +1,272 @@
+const input = document.querySelector("#image_uploads");
+const preview = document.querySelector(".preview");
+const form = document.querySelector("#send_button");
+const progressBar = document.querySelector('progress');
+const fileListMetadata = document.getElementById('fileListMetadata');
+const fileOnServer = document.getElementById('filesOnServer');
+const updateFiles  = document.getElementById('update_files');
+const foldersList = document.getElementById('folders_list');
+const createFolderForm = document.getElementById('createFolderForm');
+const createFolderButton = document.getElementById('createFolderButton');
+
+ 
+input.style.opacity = 1;
+
+createFolderButton.addEventListener("click",() => createFolderForm.submit());
+
+input.addEventListener("change", updateImageDisplay);
+form.addEventListener("click", handleSubmit);
+//updateFiles.addEventListener("click", renderFilesOnServer);
+updateFiles.addEventListener("click",renderTree);
+ 
+function updateProgressBar(value) {
+    const percent = value * 100;
+    progressBar.value = Math.round(percent);
+  }
+ 
+function updateProgressBar(value) {
+    const percent = value * 100;
+    progressBar.value = Math.round(percent);
+  }
+ 
+function updateStatusMessage(text) {
+    //if(text == "✅ Success" || text == "Error")
+    if(text != "Нет загруженных файлов")
+    {
+      statusMessage.style.removeProperty("margin-right");
+      statusMessage.style = "margin-right:52em";
+      statusMessage.style = "color: red";
+    }
+    //else
+    statusMessage.style = "margin-right:52em";
+    statusMessage.textContent = text;
+  }
+ 
+function renderFilesMetadata(fileList) {
+    fileNum.textContent = fileList.length;
+  
+    fileListMetadata.textContent = '';
+  
+    for (const file of fileList) {
+      const name = file.name;
+      const type = file.type;
+      const size = file.size;
+  
+      fileListMetadata.insertAdjacentHTML(
+        'beforeend',
+        `
+          <li>
+            <p><strong>Название:</strong> ${name}</p>
+            <p><strong>Тип:</strong> ${type}</p>
+            <p><strong>Размер:</strong> ${size} bytes</p>
+          </li>`
+      );
+    }
+  }
+ 
+function handleSubmit(event) {
+    event.preventDefault();
+    //showPendingState();
+    uploadFiles(input.files);
+}
+ 
+function uploadFiles(files) {
+    const url = 'Upload/Upload/UploadFile';
+    const method = 'Post';
+
+    var e = document.getElementById("folders");
+    var value = e.value;
+    var text = e.options[e.selectedIndex].text;
+    if(text == "Выберите папку"){
+      alert("Не выбрана папка для загрузки");
+      return;
+    }
+  
+    const xhr = new XMLHttpRequest();
+
+    // xhr.upload.addEventListener('progress', event => {
+    //     updateStatusMessage(`⏳ Uploaded ${event.loaded} bytes of ${event.total}`);
+    //     updateProgressBar(event.loaded / event.total);
+    //   });
+ 
+    xhr.addEventListener('loadend', () => {
+        if (xhr.status === 200) {
+          updateStatusMessage('Успешно загружено');
+          renderFilesMetadata(files);
+        } else {
+          updateStatusMessage('Ошибка загрузки');
+        }
+    
+        updateProgressBar(0);
+      });
+    
+    const data = new FormData();
+  
+    for (const file of files) {
+      data.append('file', file);
+    }
+  
+    xhr.open(method, url);
+    xhr.setRequestHeader('folder', encodeURIComponent(text));
+    xhr.send(data);
+    setTimeout(() => renderTree(), 1000);
+  }
+ 
+function showPendingState() {
+  submitButton.disabled = true;
+  updateStatusMessage('⏳ Pending...')
+}
+ 
+function updateImageDisplay() {
+  while (preview.firstChild) {
+    preview.removeChild(preview.firstChild);
+  }
+ 
+  const curFiles = input.files;
+  if(curFiles == null) return;
+  if (curFiles.length === 0) {
+    const para = document.createElement("p");
+    para.textContent = "Нет выбранных файлов для загрузки";
+    preview.appendChild(para);
+  } else {
+    const list = document.createElement("ol");
+    preview.appendChild(list);
+ 
+    for (const file of curFiles) {
+      const listItem = document.createElement("li");
+      const para = document.createElement("p");
+      if (validFileType(file)){
+        para.textContent = `Название файла: ${file.name}, размер файла ${returnFileSize(
+          file.size,
+        )}.`;
+        if((file.type).includes("image")){
+            const image = document.createElement("img");
+            image.src = URL.createObjectURL(file);
+            image.alt = image.title = file.name;
+            listItem.appendChild(image);
+        }
+ 
+        listItem.appendChild(para);
+      } else {
+        para.textContent = `Название файла: ${file.name}. Неправильный тип файла. Обновите свой выбор.`;
+        listItem.appendChild(para);
+      }
+ 
+      list.appendChild(listItem);
+    }
+  }
+}
+ 
+// https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
+const fileTypes = [
+  "image/apng",
+  "image/bmp",
+  "image/gif",
+  "image/jpeg",
+  "image/pjpeg",
+  "image/png",
+  "image/svg+xml",
+  "image/tiff",
+  "image/webp",
+  "image/x-icon",
+  "text/cs",
+  "text/plain",
+  "text/plain.cs=code"
+];
+ 
+function validFileType(file) {
+  return fileTypes.includes(file.type);
+}
+ 
+function returnFileSize(number) {
+  if (number < 1024) {
+    return `${number} bytes`;
+  } else if (number >= 1024 && number < 1048576) {
+    return `${(number / 1024).toFixed(1)} KB`;
+  } else if (number >= 1048576) {
+    return `${(number / 1048576).toFixed(1)} MB`;
+  }
+}
+ 
+const button = document.querySelector("form button");
+button.addEventListener("click", (e) => {
+  e.preventDefault();
+  const para = document.createElement("p");
+  para.append("Image uploaded!");
+  preview.replaceChildren(para);
+});
+
+function urldecode(str) {
+  return decodeURIComponent((str+'').replace(/\+/g, '%20'));
+}
+
+async function renderTree(){
+  let response = await fetch("upload");
+  let json = response.headers.get("foldersandfiles");
+  let jsonparse = JSON.parse(json);
+  let child = foldersList.lastElementChild;
+        while (child) {
+          foldersList.removeChild(child);
+          child = foldersList.lastElementChild;
+        }
+  for (var [key, value] of Object.entries(jsonparse)) {
+    console.log(`${key}: ${value}`);
+    let li = document.createElement('li');
+    li.className = "list-group-item";
+    let details = document.createElement('details');
+    li.append(details);
+    details.innerHTML = "<summary class='icon expand-icon glyphicon glyphicon-plus'>"+ key + "</summary>";
+    if(value[0] != undefined){
+      let ul = document.createElement('ul');
+      ul.style.class = "list-group list-group-flush";
+      value = value.split(',');
+      for (index = 0; index < value.length; index++) {
+        let childLi = document.createElement('li');
+        let span = document.createElement('span');
+        span.className = "icon expand-icon glyphicon glyphicon-plus";
+        childLi.append(span);
+        childLi.className = "list-group-item";
+        childLi.append(urldecode(value[index]));
+        ul.append(childLi);
+      }
+      details.append(ul);
+    }
+    foldersList.append(li);
+  }
+}
+
+ async function renderFilesOnServer() {
+    let response = await fetch("upload");
+    // for (let [key, value] of response.headers) {
+    //     alert(`${key} = ${value}`);
+    //   }
+
+    let fileList = response.headers.get("files_server").split(",");
+    fileOnServer.textContent = '';
+    for (const file of fileList) {
+      if(file == "NotFind")
+      {
+        fileOnServer.insertAdjacentHTML(
+          'beforeend',
+          `
+              <p><strong></strong>Файлы на сервере не найдены</p>
+          `
+        );
+        return;
+      }
+      const name = urldecode(file);
+      
+      fileOnServer.insertAdjacentHTML(
+        'beforeend',
+        `
+          <li>
+            <p><strong>Name:</strong> ${name}</p>
+          </li>`
+      );
+    }
+  }
+ 
+
+
+//(async () => renderFilesOnServer())();
+(async () => renderTree())();

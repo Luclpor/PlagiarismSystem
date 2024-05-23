@@ -1,0 +1,212 @@
+@using PlagiarismSystem.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model FoldersModel
+<div class="container" style="height : 85vh">
+    <form id="Form1" asp-action="DefaultCompare" method="post" class=" border p-3 ">
+        <div class="row">
+            <div><span asp-validation-for="Key1" class="text-danger"></span></div>
+            <label class="text-center mb-1">Сравнить один файл к одному</label>
+            <div class="col-md-6">
+                <div class="border p-3">
+                    <select class="form-select" aria-label="Default select example" class="selectpicker" id="folderId1" asp-for="Folder1" asp-items="new SelectList(Model.Folders)">
+                        <option disabled selected value="">Выберите папку для сравнения</option>
+                    </select>
+                        @* <div class="col-6" style="width: 30em;"> *@
+                            <select class="form-select" aria-label="Default select example" asp-for="File1" id="FilesOnFolder1" style="width: 100%;">
+                            <option disabled selected value="">Выберите файл для сравнения</option>
+                            </select>
+                </div>
+                    
+                        @* </div> *@
+                @* </form> *@
+            </div>
+            <div class="col-md-6">
+                <div class="border p-3">
+                    <select class="form-select" aria-label="Default select example" id="folderId2" asp-for="Folder2" asp-items="new SelectList(Model.Folders)">
+                        <option disabled selected value="">Выберите папку для сравнения</option>
+                    </select>
+                    <select asp-for="File2" class="form-select" aria-label="Default select example" id="FilesOnFolder2" style="width: 100%;">
+                        <option disabled selected value="">Выберите файл для сравнения</option>
+                    </select>
+                </div>
+                @* <form asp-action="Convert" method="post"> *@
+                    
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                <select class="form-select" aria-label="Default select example" id="languageType1" asp-items="new SelectList(Model.languageDic.Keys)" asp-for="Key1">
+                        <option disabled selected value="">Выберите язык программирования</option>
+                    </select>
+            </div>
+            @* <div class="col-md-1 mt-2">
+            </div> *@         
+        </div>
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                @* <label asp-for="Percent"></label> *@
+                <input class="form-control" type="number" asp-for="Percent1" min="15" max="100" placeholder="Введите минимальный процент совпадения"/>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="mt-2 btn btn-sm btn-danger">Сравнить</button>
+            </div>
+        </div>
+    </form>
+    <form id="Form2" asp-action="ComparePairs" method="post" class=" border p-3 mt-3">
+        <div class="row">
+            <div><span asp-validation-for="Key2" class="text-danger"></span></div>
+            <label class="text-center mb-1">Сравнить попарно</label>
+            <div class="col-md-6">
+                <div class="border p-3">
+                    <select class="form-select" aria-label="Default select example" class="selectpicker" id="folderId3" asp-for="Folder1" asp-items="new SelectList(Model.Folders)">
+                        <option disabled selected value="">Выберите папку для сравнения</option>
+                    </select>
+                        @* <div class="col-6" style="width: 30em;"> *@
+                            <select class="form-select" aria-label="Default select example" asp-for="File1" id="FilesOnFolder3" style="width: 100%;">
+                            <option disabled selected value="">Выберите файл для сравнения</option>
+                            </select>
+                </div>
+                    
+                        @* </div> *@
+                    
+                @* </form> *@
+            </div>
+            <div class="col-md-6">
+                <div class="border p-3">
+                    <select class="form-select" aria-label="Default select example" id="folderId4" asp-for="Folder2" asp-items="new SelectList(Model.Folders)">
+                        <option disabled selected value="">Выберите папку для сравнения</option>
+                    </select>
+                </div>
+                @* <form asp-action="Convert" method="post"> *@
+                    
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                <select class="form-select" aria-label="Default select example" id="languageType2" asp-items="new SelectList(Model.languageDic.Keys)" asp-for="Key2">
+                        <option disabled selected value="">Выберите язык программирования</option>
+                    </select>
+            </div>           
+        </div>
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                @* <label asp-for="Percent"></label> *@
+                <input class="form-control" type="number" asp-for="Percent2" min="15" max="100" placeholder="Введите минимальный процент совпадения"/>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="mt-2 btn btn-sm btn-danger">Сравнить</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script asp-append-version="true">
+    $(document).ready(function() {
+       loadFormValues() ;
+        
+    });
+    $('form').submit(function(event) {
+        $('form :input').each(function() {
+            if ($(this).attr('type') !== 'submit') {
+                localStorage.setItem($(this).attr('id'), $(this).val());
+            }
+        });
+    });
+
+    function loadFormValues() {
+        $('form :input').each(async function() {
+            if ($(this).attr('type') != 'submit' && localStorage.getItem($(this).attr('id')) != "null") {
+                updateSelectFromStorage($(this));
+            }
+        });
+    }
+
+    async function updateSelectFromStorage(element)
+    {
+        element = element[0];
+        attName = $(element).attr('name');
+        attId = $(element).attr('id');
+         $('#' + attId).val(localStorage.getItem(attId));
+         if(attId == 'folderId1' || attId == 'folderId2' || attId == 'folderId3' )
+                {
+                    let response = await fetch("http://localhost:5164/Convert/Convert/Create", {
+                        method: 'POST',
+                        headers: {
+                                folder: localStorage.getItem(attId) //Files
+                            }
+                    });
+                    let fileList = response.headers.get("FilesOnFolder").split(",");
+                    console.log(response.headers.get("FilesOnFolder"));
+                    select_ = document.getElementById($(element).next().attr('id'));
+                    let child = select_.lastElementChild;
+                    while (child) {
+                        select_.removeChild(child);
+                        child = select_.lastElementChild;
+                    }
+                    var option = document.createElement("option");
+                    option.value = "";
+                    option.text = "Выберите файл для сравнения";
+                    select_.appendChild(option);
+                    for (var i = 0; i < fileList.length; i++) {
+                        var option = document.createElement("option");
+                        option.value = fileList[i];
+                        option.text = fileList[i];
+                        select_.appendChild(option);
+                    }
+                    nextElName = $(element).next().attr('name');
+                    nextElId = $(element).next().attr('id');
+                    $('#' + nextElId).val(localStorage.getItem(nextElId));
+                }
+    }
+
+    async function  updateSelect(selectId,e)
+    {
+        let select_ = document.getElementById(selectId);
+        console.log("Changed to: " + e.target.value);
+        let response = await fetch("http://localhost:5164/Convert/Convert/Create", {
+            method: 'POST',
+            headers: {
+                    folder: e.target.value 
+                }
+        });
+        let fileList = response.headers.get("FilesOnFolder").split(",");
+        console.log(response.headers.get("FilesOnFolder"));
+        let child = select_.lastElementChild;
+        while (child) {
+          select_.removeChild(child);
+          child = select_.lastElementChild;
+        }
+        var option = document.createElement("option");
+        option.value = "";
+        option.text = "Выберите файл для сравнения";
+        select_.appendChild(option);
+        for (var i = 0; i < fileList.length; i++) {
+            var option = document.createElement("option");
+            option.value = fileList[i];
+            option.text = fileList[i];
+            select_.appendChild(option);
+        }
+    }
+
+
+    document.getElementById("folderId1").addEventListener('change', async function (e) {
+        updateSelect("FilesOnFolder1",e)
+    });
+    document.getElementById("folderId2").addEventListener('change', async function (e) {
+        updateSelect("FilesOnFolder2",e)
+    });
+    document.getElementById("folderId3").addEventListener('change', async function (e) {
+        updateSelect("FilesOnFolder3",e)
+    });
+
+    
+</script>

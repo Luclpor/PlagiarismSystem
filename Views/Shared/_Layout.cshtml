@@ -1,0 +1,38 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width"/>
+
+        <script src="/lib/jquery/dist/jquery.min.js"></script>
+        <script src="https://unpkg.com/prismjs@1.29.0/prism.js"></script>
+        <script src="https://unpkg.com/prismjs@1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.js"></script>
+        <link href="https://unpkg.com/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
+        <script src="https://unpkg.com/prismjs@1.29.0/components/prism-c.js"></script>
+        <script src="https://unpkg.com/prismjs@1.29.0/components/prism-python.js"></script>
+        <script src="https://unpkg.com/prismjs@1.29.0/components/prism-csharp.js"></script>
+
+        <link rel="stylesheet"
+            asp-href-include="/lib/bootstrap/dist/**/*.min.css"
+            asp-href-exclude="**/*-reboot*,**/*-grid*"/>
+        <link rel="stylesheet" asp-href-include="/lib/fontawesome/css/*.css" />
+        <title>PlagiarismSystem</title>
+    </head>
+    <body >
+            <nav class="navbar navbar-dark bg-dark">
+                <div class="col">
+                    <a class="navbar-brand" href="#">PLAGIARISM SYSTEM</a>
+                    @await Component.InvokeAsync("NavigationMenu")
+                </div>
+            </nav>
+            <br>
+            <div class="col-xs-3 mt-3" style="margin-bottom: 4rem">
+                @RenderBody()
+            </div>
+            <footer class="fixed-bottom py-3 bg-dark text-white-50 "> 
+                <div class="container text-center">
+                <small>PlagiarismSystem</small>
+                </div>
+            </footer>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+@using PlagiarismSystem.Models
+@addTagHelper *, PlagiarismSystem
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model ConvertResult
+@foreach(var kvp in Model.dictionaryFiles)
+{
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <table class="table table-striped table-bordered border-secondary"  style="width: 800px;">
+                <thead>
+                    @* @foreach(var kvp in Model.dictionaryFiles) *@
+                    @* { *@
+                        <tr class="text-center">
+                            <th>@kvp.Key.FileName</th>
+                            <th>@kvp.Value.FileName</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="text-center">Процент совпадения - @kvp.Key.Percent %</th>
+                        </tr>
+                    @* } *@
+                </thead>
+                <tbody>
+                    @* @foreach(var kvp in Model.dictionaryFiles)
+                    {    *@
+                        <tr>
+                            <td><pre style="width: 500px; overflow-x: auto;">@kvp.Key.ParseContent</pre></td>
+                            <td><pre style="width: 500px; overflow-x: auto;">@kvp.Value.ParseContent</pre></td>
+                        </tr>
+                    @* } *@
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+<div class="row">
+        <div class="col d-flex justify-content-center">
+            <a asp-controller="Convert" asp-action="Create" class="btn btn-primary">Назад</a>
+        </div>
+    </div>
+
+
+<script>
+    const lan = "@Model.Language";
+    //const test = document.getElementById('test');
+
+    $(document).ready(function() {
+        replaceTableContent();
+    });
+
+    function replaceTableContent() {
+    // Перебор каждой ячейки таблицы
+        let count = 0;
+        let maxHeight = 0;
+        let preThis = undefined;
+        $("table td pre").each(function() {
+            count++;
+            // Получаем текущее содержимое ячейки
+            var currentContent = $(this).text();
+            var languageId = lan;
+            var language = Prism.languages[languageId]
+
+            if (typeof language != 'undefined')
+            {
+                let highlited = Prism.highlight(currentContent, language, languageId);
+                $(this).html($.parseHTML(highlited));
+            }
+
+            var height = $(this).height();
+            if (height > maxHeight) {
+                maxHeight = height;
+            }
+           
+            if(count % 2 == 0)
+            {
+                //console.log("here");
+                $(this).height(maxHeight);
+                preThis.height(maxHeight);
+                preThis = undefined;
+                maxHeight =0;
+            }else
+            {
+                preThis = $(this);
+            }
+        });
+        //if(count < $("table td pre").height(maxHeight);
+    }
+
+   //const content = document.getElementById('content').textContent;
+    
+
+    
+
+    //(async () => highlightText())();
+
+    function highlightText(content)
+        {
+            var pre = document.createElement("pre");
+            var languageId = c;
+            var language = Prism.languages[languageId]
+
+            if (typeof language != 'undefined')
+            {
+                let highlited = Prism.highlight(content, language, languageId);
+                $("'#content'").html($.parseHTML(highlited));
+                return;
+            }
+        }
+</script>

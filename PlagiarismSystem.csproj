@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableDefaultItems>true</EnableDefaultItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Upload/csharp/*.cs" />
+    <Compile Remove="Upload/lab1/*.cs" />
+    <Compile Remove="Upload/lab2/*.cs" />
+    <Compile Remove="Upload/lab3/*.cs" />
+    <Compile Remove="Upload/lab4/*.cs" />
+    <Compile Remove="Upload/lab5/*.cs" />
+    <Compile Remove="Upload/lab6/*.cs" />
+    <Compile Remove="Upload/lab7/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Upload/csharp/*.cs" />
+    <None Include="Upload/lab1/*.cs" />
+    <None Include="Upload/lab2/*.cs" />
+    <None Include="Upload/lab3/*.cs" />
+    <None Include="Upload/lab4/*.cs" />
+    <None Include="Upload/lab5/*.cs" />
+    <None Include="Upload/lab6/*.cs" />
+    <None Include="Upload/lab7/*.cs" />
+  </ItemGroup>
+
+  <!-- <ItemGroup>
+    <ExcludeFromPackageFolders Include="Upload">
+    </ExcludeFromPackageFolders>
+  </ItemGroup> -->
+  <!-- <ItemGroup>
+    <Compile Include="Program.cs" Exclude="Upload/*"/> -->
+    <!-- <Compile Include="*"/> -->
+    <!-- <Compile Include="*.cs"/> -->
+    <!-- <PackageReference Include="Antlr4.Runtime" Version="4.8" /> -->
+    <!-- <ClCompile Include="Files\*.cs" Condition="'$(Configuration)' == 'Debug'"/> -->
+  <!-- </ItemGroup> -->
+
+  <ItemGroup>
+    <PackageReference Include="Antlr4.Runtime" Version="4.8" />
+  </ItemGroup>
+</Project>

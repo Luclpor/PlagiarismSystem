@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "PlagiarismSystem/1.0.0": {
+        "dependencies": {
+          "Antlr4.Runtime": "4.8.0"
+        },
+        "runtime": {
+          "PlagiarismSystem.dll": {}
+        }
+      },
+      "Antlr4.Runtime/4.8.0": {
+        "runtime": {
+          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {
+            "assemblyVersion": "4.8.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PlagiarismSystem/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Antlr4.Runtime/4.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WK79TTCmzU6fGuUMrklwMjq5dbz3orGCaRl33f3m+zka1IT0fNRuyUAOdvm40kuovI2cUFzcHMPsl7b93TyFaQ==",
+      "path": "antlr4.runtime/4.8.0",
+      "hashPath": "antlr4.runtime.4.8.0.nupkg.sha512"
+    }
+  }
+}
