@@ -8,7 +8,6 @@ namespace Xylab.PlagiarismDetect.Frontend
         /// creating hashes.
         /// The hash-code will be written in every Token for the next&lt;hash_length&gt; token.
         /// (includes the Token itself)
-        /// Das Ganze laeuft in linearer Zeit.
         /// condition: 1 &lt; hashLength &lt; 26   !!!
         /// </summary>
         /// <param name="s">Code strucutre</param>
@@ -16,10 +15,6 @@ namespace Xylab.PlagiarismDetect.Frontend
         /// <param name="makeTable">Make table?</param>
         private static void CreateHashes(Structure s, int hashLength, bool makeTable)
         {
-            // Hier wird die obere Grenze der Hash-Laenge festgelegt.
-            // Sie ist bestimmt durch die Bitzahl des 'int' Datentyps und der Anzahl
-            // der Token.
-
             if (hashLength < 1) hashLength = 1;
             hashLength = (hashLength < 26 ? hashLength : 25);
             if (s.Size < hashLength) return;
