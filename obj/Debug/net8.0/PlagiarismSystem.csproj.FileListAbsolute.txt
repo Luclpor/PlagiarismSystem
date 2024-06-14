@@ -30,3 +30,4 @@ C:\Users\vanya\OneDrive\Рабочий стол\PlagiarismSystem\bin\Debug\net8.
 C:\Users\vanya\OneDrive\Рабочий стол\PlagiarismSystem\obj\Debug\net8.0\PlagiarismSystem.csproj.AssemblyReference.cache
 C:\Users\vanya\OneDrive\Рабочий стол\PlagiarismSystem\obj\Debug\net8.0\Plagiari.E94033A9.Up2Date
 C:\Users\vanya\OneDrive\Рабочий стол\PlagiarismSystem\bin\Debug\net8.0\bower.json
+C:\Users\vanya\OneDrive\Рабочий стол\PlagiarismSystem\obj\Debug\net8.0\PlagiarismSystem.sourcelink.json

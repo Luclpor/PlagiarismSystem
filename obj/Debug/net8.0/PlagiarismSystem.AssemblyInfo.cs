@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PlagiarismSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9de7615ddeb1cbc87c3b62de0cd3b8c3e6877393")]
 [assembly: System.Reflection.AssemblyProductAttribute("PlagiarismSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PlagiarismSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
